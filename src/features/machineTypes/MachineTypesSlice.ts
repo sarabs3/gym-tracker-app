@@ -96,7 +96,12 @@ export const MachineTypesSlice = createSlice({
     addNewField: (state, {payload}: PayloadAction<IAddNewFieldPayload>) => {
         const machine = state.machines.find(machine => machine.id === payload.id);
         if (!machine) return;
-        machine.blueprint.push({ fieldName: '', fieldType: payload.type, id: uuidv4(), fieldValue: '' });
+        const newField = { fieldName: '', fieldType: payload.type, id: uuidv4(), fieldValue: '' };
+        machine.blueprint.push(newField);
+        machine.machines = machine.machines.map(userMachine => {
+            userMachine.fields.push(newField);
+            return userMachine;
+        });
     },
     updateFieldName: (state, {payload}: PayloadAction<IUpdateFieldPayload>) => {
         const machine = state.machines.find(machine => machine.id === payload.id);
@@ -104,6 +109,12 @@ export const MachineTypesSlice = createSlice({
         const blueprint = machine.blueprint.find(print => print.id === payload.fieldId);
         if (!blueprint) return;
         Object.assign(blueprint, { [payload.key]: payload.value });
+        machine.machines = machine.machines.map(userMachine => {
+            const updatedField = userMachine.fields.find(field => field.id === payload.fieldId);
+            if (!updatedField) return userMachine;
+            Object.assign(updatedField, { [payload.key]: payload.value });
+            return userMachine;
+        });
     },
     addMachine: (state, {payload}) => {
         console.log("payload", payload.id);
