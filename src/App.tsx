@@ -1,16 +1,17 @@
 import React from 'react';
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import MachineTypes from './features/machineTypes/Pages/MachineTypes';
+import Dashboard from './features/machineTypes/Pages/Dashboard';
 import Machines from './features/machineTypes/Machines';
-import MachineTypesList from './features/machineTypes/MachineTypesList';
+import MachineTypesList from './features/machineTypes/Pages/MachineTypesList';
+import AllMachines from './features/machineTypes/Pages/AllMachines';
 
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path='/types' element={<MachineTypes />}>
+      <Route path='/types' element={<Dashboard />}>
         <Route path='' element={<MachineTypesList />} />
-        <Route path='manage' element={<Machines />} />
+        <Route path='all' element={<AllMachines />} />
         <Route path=':id' element={<Machines />} />
       </Route>
       <Route path='/' element={<Navigate to="/types" />} />

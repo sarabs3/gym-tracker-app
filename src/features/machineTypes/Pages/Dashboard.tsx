@@ -7,7 +7,7 @@ import useWindowSize from "../../../hooks/useWindowResize";
 import { Size } from "../../../types/machine";
 import Navigation from "../../../components/Navigation";
 
-const MachineTypes = () => {
+const Dashboard = () => {
   const [showMenu, setShowMenu] = useState(false);
   const size: Size = useWindowSize();
   const [isMobile, setIsMobile] = useState(false);
@@ -44,4 +44,4 @@ const MachineTypes = () => {
   );
 };
 
-export default MachineTypes;
+export default Dashboard;

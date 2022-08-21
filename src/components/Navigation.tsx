@@ -16,7 +16,7 @@ const Navigation: FC<Props> = ({ navMenus }) => {
   }, [params.id]);
   return (
     <nav className="my-1 flex flex-col lg:flex-row">
-      <Link className={styleClass("manage", activeMenu)} to={`/types/manage`}>
+      <Link className={styleClass("manage", activeMenu)} to={`/types`}>
         Manage Types
       </Link>
       <Link className={styleClass("all", activeMenu)} to={`/types/all`}>

@@ -15,7 +15,6 @@ const Machine: FC<Props> = ({
   return (
     <div
       className="my-2 md:m-2 border relative rounded-lg transition ease-in-out md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] shadow bg-white hover:shadow-none hover:bg-blue-50 border-b-8 hover:border-blue-300"
-      key={machine.id}
     >
       <CardHeader
         title={getTitleFieldValue?.fieldValue}

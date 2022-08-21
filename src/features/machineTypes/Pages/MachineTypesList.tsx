@@ -1,8 +1,8 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { selectTypes, addNew } from "./MachineTypesSlice";
-import MachineTypeComponent from "./components/MachineTypeCard";
-import PageHeading from "../../components/PageHeading";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { selectTypes, addNew } from "../MachineTypesSlice";
+import MachineTypeComponent from "../components/MachineTypeCard";
+import PageHeading from "../../../components/PageHeading";
 
 const MachineTypesList = () => {
   const types = useAppSelector(selectTypes);
