@@ -1,10 +1,10 @@
-# Hogwarts Schedule
+# Construction Machine management
 
 ### Hosted URL 
 
 Application is deployed here to quickly review the output.
 
-
+https://visionary-shortbread-ac7953.netlify.app/types
 
 ### Tech Stack
 - Typescript
