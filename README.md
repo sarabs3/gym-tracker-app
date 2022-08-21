@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# Hogwarts Schedule
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+### Hosted URL 
 
-## Available Scripts
+Application is deployed here to quickly review the output.
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Tech Stack
+- Typescript
+- ReactJs
+- Redux and Redux Toolkit
+- TailwindCss
+- React Testing Library
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Local Setup
 
-### `npm test`
+- Clone or Download the repo.
+- Run `npm install` inside the directory.
+- Run `npm start` to spin up the local dev setup.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Tasks
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [x] Created the UI
+- [x] Staff member can create different machine types
+- [x] Staff member can specify which attributes the machine type has
+- [x] Available attributes are date, text, checkbox or number
+- [x] Staff member can able to remove attributes that are no longer required
+- [x] All machines of one type share attributes 
+- [x] Staff member can pick one of the attributes as a title attribute for the machines of one type (For eg. model).
+- [x] Staff member can set a title for a machine type (Chainsaw, Bulldozer, ...)
+- [x] Staff member can able to add new machine types as well as to edit or delete existing ones at any time
+- [x] Staff member can have many machines of each machine type ( for example 6 chainsaws from different brands that have different characteristics)
+- [x] Staff member can able to filter by machine type (See all chain saws, all bull dozers, ...).
+- [x] Staff member can able see all machines grouped by their type on one screen
+- [x] Staff member can able to add new machines as well as to edit or delete existing ones at any time
+- [x] Staff member can use URL navigation
+- [x] All data will be saved even after page reload
+- [x] Staff member can able to use the app on mobile phone or tablet as well as on the computer
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Test Cases
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`npm test` for running unit test cases
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Due to shortage of time, I wasn't able to write much of the test cases but I have written and you can review them
+for the reducer in `/features/machineTypes/MachineTypingSlice.spec.ts` file and for components under `/components` directory.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+![Alt Text](https://media.giphy.com/media/TBZEgKryt6NSPXUKBG/giphy.gif)
+
+
+
+I hope you will enjoy reviewing the code as much as I enjoyed while writing it ❤️ 
