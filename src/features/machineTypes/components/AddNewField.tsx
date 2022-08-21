@@ -23,8 +23,8 @@ const AddNewField: FC<Props> = ({ addField }) => {
         addField(e.target.value as FieldTypes);
     };
     return (
-    <div className='mb-2 flex'>
-        <select className='bg-blue-700 py-2 w-full rounded text-white px-3' value={fieldTypeValue} onChange={selectFieldType}>
+    <div className='flex absolute w-full left-0 bottom-0'>
+        <select className='bg-blue-700 py-2 w-full text-white px-3 form-select-white appearance-none bg-clip-padding bg-no-repeat' value={fieldTypeValue} onChange={selectFieldType}>
             <option value="">Add New Field</option>
             {options.map(option => <option key={option} value={option}>{option}</option>) }
         </select>

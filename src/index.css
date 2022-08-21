@@ -16,5 +16,19 @@ code {
 }
 .form-select {
   background-image: url('./assets/icons/caret.svg');
-  background-position: 98% center;
+  background-position: 95% center;
+}
+.form-select-white {
+  background-image: url('./assets/icons/caretW.svg');
+  background-position: 95% center;}
+@layer components {
+  .btn-primary {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded uppercase transition;
+  }
+  .delete-icon {
+    @apply absolute top-1 right-3 cursor-pointer hover:shadow;
+  }
+  .w-col-5 {
+    width: calc(20% - 1rem);
+  }
 }

@@ -10,8 +10,8 @@ interface Props {
 const Select: FC<Props> = ({ children, name, id, value, onChange }) => (
     <div className="flex justify-center">
   <div className="mb-3 xl:w-96">
-    <label htmlFor={id}>{name}</label>
-    <select onChange={onChange} id={id} value={value} name={name} className="form-select appearance-none
+    <label className="text-sm mb-1" htmlFor={id}>{name}</label>
+    <select onChange={onChange} id={id} value={value} name={id} className="form-select appearance-none
       block
       w-full
       px-3

@@ -28,15 +28,22 @@ const MachineTypeComponent: FC<Props> = ({
     };
 
     return (
-        <div className='p-10 m-2 border' key={type.id}>
-            <DeleteIcon onClick={deleteFieldType} width={32} />
-            <Input onChange={handleTypeChange} id='type' name='type' value={type.type} />
-            <Select id="Title" name="title" value={type.title} onChange={handleTitleAttributeChange}>
-                {type.blueprint.map(field => <option key={field.id} value={field.fieldName}>{field.fieldName}</option>)}
-            </Select>
-            <h4>Fields</h4>
-            <MachineTypeFields fields={type.blueprint} typeId={type.id} />
-            <AddNewField addField={handleAddField} />
+        <div className='flex flex-col relative m-2 border rounded transition ease-in-out bg-white rounded-lg w-[calc(25%-1rem)]' key={type.id}>
+            <div className='flex bg-gray-300 justify-between p-2 items-center font-bold rounded-t'>
+                <span>{type.type}</span>
+                <DeleteIcon onClick={deleteFieldType} width={32} className="cursor-pointer" />
+            </div>
+            <div className='border-b p-2 bg-gray-50 px-4'>
+                <Input onChange={handleTypeChange} id='type' name='Object Type' value={type.type} />
+                <Select id="title" name="Title Attribute" value={type.title} onChange={handleTitleAttributeChange}>
+                    {type.blueprint.map(field => <option key={field.id} value={field.fieldName}>{field.fieldName}</option>)}
+                </Select>
+            </div>
+            <h4 className='my-3 px-2'>Attributes</h4>
+            <div className='border-t p-2 px-4 rounded-b mb-8'>
+                <MachineTypeFields fields={type.blueprint} typeId={type.id} />
+                <AddNewField addField={handleAddField} />
+            </div>
         </div>
     )
 };

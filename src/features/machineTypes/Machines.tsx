@@ -5,6 +5,7 @@ import { addMachine, selectMachines, deleteMachine, updateMachineField } from '.
 import { Navigate, useParams } from 'react-router-dom';
 import AllMachines from './components/AllMachines';
 import Machine from './components/Machine';
+import PageHeading from '../../app/components/PageHeading';
 
 const Machines = () => {
     const params = useParams();
@@ -31,8 +32,15 @@ const Machines = () => {
     if (!params?.id) return <Navigate to="/types" />
     if (params.id === 'all') return <AllMachines />
     return (
-        <div className='container'>
-            <div className='flex'>
+        <div className='container bg-gray-100 rounded mb-5 py-3 px-5'>
+            <PageHeading>
+                <div className='uppercase text-xs'>
+                    <span className='ml-2'>Total Machines:</span>
+                    <span className='font-bold uppercase text-sm'> {machines?.length}</span>
+                </div>
+                <button onClick={AddNew} className='btn-primary'>Add New Machine</button>
+            </PageHeading>
+            <div className='flex flex-wrap '>
                 {machines?.map(machine => (
                     <Machine
                         machine={machine}
@@ -40,9 +48,6 @@ const Machines = () => {
                         handleChange={handleChange}
                     />
                 ))}
-                <div className='p-10 m-2 border'>
-                    <button onClick={AddNew} className='p-3 border'>Add New</button>
-                </div>
             </div>
         </div>
     )
