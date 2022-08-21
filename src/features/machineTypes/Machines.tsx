@@ -44,6 +44,7 @@ const Machines = () => {
                 {machines?.map(machine => (
                     <Machine
                         machine={machine}
+                        key={machine.id}
                         machineDelete={machineDelete}
                         handleChange={handleChange}
                     />

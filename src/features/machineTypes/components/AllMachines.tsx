@@ -1,8 +1,8 @@
 import { ChangeEvent } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import PageHeading from "../../../app/components/PageHeading";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { deleteMachine, selectTypes, updateMachineField } from "../MachineTypesSlice";
+import { addMachine, deleteMachine, selectTypes, updateMachineField } from "../MachineTypesSlice";
 import Machine from "./Machine";
 
 const AllMachines = () => {
@@ -10,11 +10,10 @@ const AllMachines = () => {
     const allTypes = useAppSelector(selectTypes);
     const dispatch = useAppDispatch();
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>, id: string, fieldId: string) => {
-        if (!params?.id) return;
+    const handleChange = (e: ChangeEvent<HTMLInputElement>, machineId: string, fieldId: string, id: string) => {
         dispatch(updateMachineField({
-            id: params.id,
-            machineId: id,
+            id,
+            machineId,
             fieldId,
             key: 'fieldValue',
             value: e.target.value
@@ -24,6 +23,9 @@ const AllMachines = () => {
         if (!params?.id) return;
         dispatch(deleteMachine({id: params.id, machineId: id}));
     }
+    const addNewObject = (id: string) => {
+        dispatch(addMachine({id}));
+    };
     return (
         <div className="flex flex-col container ">
             {allTypes.map(type => (
@@ -36,17 +38,18 @@ const AllMachines = () => {
                             <span className='font-bold uppercase text-sm'> {type.machines.length} </span>
                         </div>
                         <div>
-                            <Link to={`/types/${type.id}`} className='btn-primary'>Add New {type.type}</Link>
+                            <button onClick={() => addNewObject(type.id)} className='btn-primary'>Add New {type.type}</button>
                         </div>
 
                     </PageHeading>
                     <div  className="flex flex-wrap">
                     {type.machines.map(machine => (
                         <Machine
-                        machine={machine}
-                        machineDelete={machineDelete}
-                        handleChange={handleChange}
-                    />
+                            key={machine.id}
+                            machine={machine}
+                            machineDelete={machineDelete}
+                            handleChange={(e, id, fieldId) => handleChange(e, id, fieldId, type.id)}
+                        />
                     ))}
                     </div>
                 </div>

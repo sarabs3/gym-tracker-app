@@ -5,7 +5,7 @@ import { IMachine } from '../../../types/machine';
 
 const Machine:FC<Props> = ({ machine, machineDelete, handleChange }) => {
     return (
-        <div className='p-10 m-2 border relative rounded-lg transition ease-in-out w-col-5 shadow bg-white hover:shadow-none hover:bg-blue-50 border-t-8 hover:border-blue-300' key={machine.id}>
+        <div className='p-10 my-2 md:m-2 border relative rounded-lg transition ease-in-out md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] shadow bg-white hover:shadow-none hover:bg-blue-50 border-t-8 hover:border-blue-300' key={machine.id}>
             <DeleteIcon onClick={() => machineDelete(machine.id)} width={32} className="delete-icon" />
             {machine.fields.map(field => (
                 <div key={field.id}>

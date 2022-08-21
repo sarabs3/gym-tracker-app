@@ -106,7 +106,9 @@ export const MachineTypesSlice = createSlice({
         Object.assign(blueprint, { [payload.key]: payload.value });
     },
     addMachine: (state, {payload}) => {
+        console.log("payload", payload.id);
         const machine = state.machines.find(machine => machine.id === payload.id);
+        console.log("payload", machine?.title);
         if (!machine) return;
         machine.machines.push({ fields: machine.blueprint, id: uuidv4() });
     },
