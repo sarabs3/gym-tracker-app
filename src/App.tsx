@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import MachineTypes from './features/machineTypes/MachineTypes';
+import MachineTypes from './features/machineTypes/Pages/MachineTypes';
 import Machines from './features/machineTypes/Machines';
 import MachineTypesList from './features/machineTypes/MachineTypesList';
 
