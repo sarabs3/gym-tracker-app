@@ -108,11 +108,11 @@ export const MachineTypesSlice = createSlice({
         if (!machine) return;
         const blueprint = machine.blueprint.find(print => print.id === payload.fieldId);
         if (!blueprint) return;
-        Object.assign(blueprint, { [payload.key]: payload.value });
+        Object.assign(blueprint, { [payload.key]: payload.value, fieldValue: '' });
         machine.machines = machine.machines.map(userMachine => {
             const updatedField = userMachine.fields.find(field => field.id === payload.fieldId);
             if (!updatedField) return userMachine;
-            Object.assign(updatedField, { [payload.key]: payload.value });
+            Object.assign(updatedField, { [payload.key]: payload.value, fieldValue: '' });
             return userMachine;
         });
     },
@@ -160,6 +160,7 @@ export const { updateMachineType, addNew, deleteMachineType, addNewField,
 
 export const selectTypes = (state: RootState) => state.machineTypes.machines;
 export const selectMachines = (id: string | undefined) => (state: RootState) => state.machineTypes.machines.find(machine => machine.id === id)?.machines;
+export const selectTitleField = (id: string | undefined) => (state: RootState) => state.machineTypes.machines.find(machine => machine.id === id)?.title;
 
 
 export default MachineTypesSlice.reducer;

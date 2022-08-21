@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import Input from '../../components/FormElements/Input';
-import { addMachine, selectMachines, deleteMachine, updateMachineField } from './MachineTypesSlice';
+import { addMachine, selectMachines, deleteMachine, updateMachineField, selectTitleField } from './MachineTypesSlice';
 import { Navigate, useParams } from 'react-router-dom';
 import AllMachines from './components/AllMachines';
 import Machine from './components/Machine';
@@ -10,6 +10,7 @@ import PageHeading from '../../app/components/PageHeading';
 const Machines = () => {
     const params = useParams();
     const machines = useAppSelector(selectMachines(params?.id));
+    const titleField = useAppSelector(selectTitleField(params.id));
     const dispatch = useAppDispatch();
     const handleChange = (e: ChangeEvent<HTMLInputElement>, id: string, fieldId: string) => {
         if (!params?.id) return;
@@ -45,6 +46,7 @@ const Machines = () => {
                     <Machine
                         machine={machine}
                         key={machine.id}
+                        titleField={titleField}
                         machineDelete={machineDelete}
                         handleChange={handleChange}
                     />

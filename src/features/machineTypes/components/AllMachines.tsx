@@ -47,6 +47,7 @@ const AllMachines = () => {
                         <Machine
                             key={machine.id}
                             machine={machine}
+                            titleField={type.title}
                             machineDelete={machineDelete}
                             handleChange={(e, id, fieldId) => handleChange(e, id, fieldId, type.id)}
                         />
