@@ -16,6 +16,7 @@ const Input: FC<Props> = ({ id, name, value, onChange, type = "text" }) => {
                 <input
                     name={id}
                     className=' border rounded py-1 px-2 bg-white'
+                    checked={Boolean(value)}
                     type={type}
                     id={id}
                     value={value}

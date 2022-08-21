@@ -10,6 +10,7 @@ import {
 import { Navigate, useParams } from "react-router-dom";
 import Machine from "./components/Machine";
 import PageHeading from "../../components/PageHeading";
+import { FieldTypes } from "../../types/machine";
 
 const Machines = () => {
   const params = useParams();
@@ -22,13 +23,17 @@ const Machines = () => {
     fieldId: string
   ) => {
     if (!params?.id) return;
+    let value: string | boolean = e.target.value;
+    if (e.target.type === FieldTypes.checkbox) {
+      value = e.target.checked
+    }
     dispatch(
       updateMachineField({
         id: params.id,
         machineId: id,
         fieldId,
         key: "fieldValue",
-        value: e.target.value,
+        value: value,
       })
     );
   };

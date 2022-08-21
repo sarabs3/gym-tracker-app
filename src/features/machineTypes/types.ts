@@ -25,5 +25,5 @@ export interface IMachinePayload extends IDeletePayload {
 export interface IMachineFieldUpdatePayload extends IMachinePayload {
     fieldId: string;
     key: string;
-    value: string
+    value: string | boolean
 }
