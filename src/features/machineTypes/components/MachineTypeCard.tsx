@@ -51,6 +51,7 @@ const MachineTypeComponent: FC<Props> = ({ type }) => {
           value={type.title}
           onChange={handleTypeChange}
         >
+          <option>Select Title Attribulte</option>
           {type.blueprint.map((field) => (
             <option key={field.id} value={field.fieldName}>
               {field.fieldName}

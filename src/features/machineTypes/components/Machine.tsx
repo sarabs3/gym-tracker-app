@@ -20,7 +20,7 @@ const Machine: FC<Props> = ({
         title={getTitleFieldValue?.fieldValue}
         onDelete={() => machineDelete(machine.id)}
       />
-      <div className="px-10">
+      <div className="my-3 px-10">
         {machine.fields.map((field) => (
           <div key={field.id}>
             <Input
