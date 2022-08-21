@@ -34,7 +34,7 @@ const MachineTypesList = () => {
             </div>
             <button onClick={AddNew} className='btn-primary'>Add New Type</button>
         </PageHeading>
-            <div className='flex flex-wrap rounded'>
+            <div className='flex flex-wrap rounded flex-col md:flex-row'>
                 {types.map(type => (
                     <MachineTypeComponent
                         type={type}
@@ -45,6 +45,7 @@ const MachineTypesList = () => {
                         handleChange={handleChange}
                     />
                 ))}
+                <button onClick={AddNew} className='btn-primary md:hidden'>Add New Type</button>
             </div>
         </div>
     )

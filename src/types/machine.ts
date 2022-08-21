@@ -22,3 +22,7 @@ export interface IMachine {
     fields: IBlueprintItem[]
     id: string;
 }
+export interface Size {
+    width: number | undefined;
+    height: number | undefined;
+  }

@@ -28,7 +28,7 @@ const MachineTypeComponent: FC<Props> = ({
     };
 
     return (
-        <div className='flex flex-col relative m-2 border rounded transition ease-in-out bg-white rounded-lg w-[calc(25%-1rem)]' key={type.id}>
+        <div className='flex flex-col relative m-2 border rounded transition ease-in-out bg-white rounded-lg md:w-[calc(50%-1rem)] xl:w-[calc(33%-1rem)]' key={type.id}>
             <div className='flex bg-gray-300 justify-between p-2 items-center font-bold rounded-t'>
                 <span>{type.type}</span>
                 <DeleteIcon onClick={deleteFieldType} width={32} className="cursor-pointer" />
