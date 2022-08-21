@@ -1,5 +1,4 @@
 import { ChangeEvent } from "react";
-import { useParams } from "react-router-dom";
 import PageHeading from "../../../components/PageHeading";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
@@ -11,7 +10,6 @@ import {
 import Machine from "../components/Machine";
 
 const AllMachines = () => {
-  const params = useParams();
   const allTypes = useAppSelector(selectTypes);
   const dispatch = useAppDispatch();
 
@@ -31,9 +29,8 @@ const AllMachines = () => {
       })
     );
   };
-  const machineDelete = (id: string) => {
-    if (!params?.id) return;
-    dispatch(deleteMachine({ id: params.id, machineId: id }));
+  const machineDelete = (machineId: string, id: string) => {
+    dispatch(deleteMachine({ id, machineId }));
   };
   const addNewObject = (id: string) => {
     dispatch(addMachine({ id }));
@@ -66,7 +63,7 @@ const AllMachines = () => {
                 key={machine.id}
                 machine={machine}
                 titleField={type.title}
-                machineDelete={machineDelete}
+                machineDelete={(machineId) => machineDelete(machineId, type.id)}
                 handleChange={(e, id, fieldId) =>
                   handleChange(e, id, fieldId, type.id)
                 }
