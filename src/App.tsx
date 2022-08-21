@@ -2,10 +2,16 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import AddMachineType from './app/components/AddMachineType';
+import { Route, Routes } from 'react-router-dom';
+import MachineTypes from './features/machineTypes/MachineTypes';
+import Machines from './features/machineTypes/Machines';
+import MachineTypesList from './features/machineTypes/MachineTypesList';
 
 function App() {
   return (
     <div className="App">
+      <AddMachineType />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
@@ -53,6 +59,20 @@ function App() {
       </header>
     </div>
   );
+}
+
+export const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path='/app' element={<App />} />
+      <Route path='/types' element={<MachineTypes />}>
+        <Route path='' element={<MachineTypesList />} />
+        <Route path='manage' element={<Machines />} />
+        <Route path=':id' element={<Machines />} />
+      </Route>
+      <Route path='/add/machinetypes' element={<AddMachineType />} />
+    </Routes>
+  )
 }
 
 export default App;

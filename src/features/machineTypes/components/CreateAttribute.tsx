@@ -5,7 +5,8 @@ const options = [
     FieldTypes.text,
     FieldTypes.number,
     FieldTypes.date,
-    FieldTypes.checkbox
+    FieldTypes.checkbox,
+    FieldTypes.delete
 ];
 interface Props {
     onNameChange: (e: string, v: string) => void

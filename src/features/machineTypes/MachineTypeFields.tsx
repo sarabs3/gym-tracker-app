@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { useAppDispatch } from '../../app/hooks';
-import { updateFieldName } from './MachineTypesSlice';
+import { updateFieldName, deleteAttribute } from './MachineTypesSlice';
 import CreateAttribute from './components/CreateAttribute';
-import { IBlueprintItem } from '../../types/machine';
+import { FieldTypes, IBlueprintItem } from '../../types/machine';
 
 interface Props {
     fields: IBlueprintItem[];
@@ -12,6 +12,9 @@ interface Props {
 const MachineTypeFields: FC<Props> = ({ fields, typeId }) => {
     const dispatch = useAppDispatch();
     const onNameChange = (key: string, value: string, fieldId: string, id: string) => {
+        if (value === FieldTypes.delete) {
+            dispatch(deleteAttribute({ key, fieldId, id }));
+        }
         dispatch(updateFieldName({ key, value, fieldId, id }));
     }
     if (fields?.length <= 0) return null;
