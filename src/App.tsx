@@ -1,78 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
-import AddMachineType from './app/components/AddMachineType';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import MachineTypes from './features/machineTypes/MachineTypes';
 import Machines from './features/machineTypes/Machines';
 import MachineTypesList from './features/machineTypes/MachineTypesList';
 
-function App() {
-  return (
-    <div className="App">
-      <AddMachineType />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
-}
-
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path='/app' element={<App />} />
       <Route path='/types' element={<MachineTypes />}>
         <Route path='' element={<MachineTypesList />} />
         <Route path='manage' element={<Machines />} />
         <Route path=':id' element={<Machines />} />
       </Route>
-      <Route path='/add/machinetypes' element={<AddMachineType />} />
+      <Route path='/' element={<Navigate to="/types" />} />
     </Routes>
   )
 }
 
-export default App;
+export default AppRoutes;

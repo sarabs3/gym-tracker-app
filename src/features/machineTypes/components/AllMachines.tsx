@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 import { useParams } from "react-router-dom";
-import PageHeading from "../../../app/components/PageHeading";
+import PageHeading from "../../../components/PageHeading";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { addMachine, deleteMachine, selectTypes, updateMachineField } from "../MachineTypesSlice";
 import Machine from "./Machine";

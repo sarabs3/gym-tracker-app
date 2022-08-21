@@ -1,5 +1,4 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
 import MachineTypesSlice from '../features/machineTypes/MachineTypesSlice';
 
 function saveToLocalStorage(state: any) {
@@ -19,7 +18,6 @@ function loadFromLocalStorage() {
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     machineTypes: MachineTypesSlice
   },
   preloadedState: loadFromLocalStorage()

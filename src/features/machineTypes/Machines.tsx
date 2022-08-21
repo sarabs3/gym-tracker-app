@@ -1,11 +1,10 @@
 import React, { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import Input from '../../components/FormElements/Input';
 import { addMachine, selectMachines, deleteMachine, updateMachineField, selectTitleField } from './MachineTypesSlice';
 import { Navigate, useParams } from 'react-router-dom';
 import AllMachines from './components/AllMachines';
 import Machine from './components/Machine';
-import PageHeading from '../../app/components/PageHeading';
+import PageHeading from '../../components/PageHeading';
 
 const Machines = () => {
     const params = useParams();
