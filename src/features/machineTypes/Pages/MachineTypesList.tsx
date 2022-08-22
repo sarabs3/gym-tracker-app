@@ -22,10 +22,11 @@ const MachineTypesList = () => {
           Add New Type
         </button>
       </PageHeading>
-      {types.length === 0}{" "}
-      <NoMachines>
-        <p className="text-sm">Add new type</p>
-      </NoMachines>
+      {types.length === 0 && (
+        <NoMachines>
+          <p className="text-sm">Add new type</p>
+        </NoMachines>
+      )}
       <div className="flex flex-wrap rounded flex-col md:flex-row">
         {types.map((type) => (
           <MachineTypeComponent type={type} key={type.id} />

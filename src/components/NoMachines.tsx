@@ -10,7 +10,7 @@ const NoMachines:FC<Props> = ({ children }) => (
 );
 
 interface Props {
-    children: ReactNode;
+    children?: ReactNode;
 };
 
 export default NoMachines;

@@ -11,6 +11,7 @@ import { Navigate, useParams } from "react-router-dom";
 import Machine from "./components/Machine";
 import PageHeading from "../../components/PageHeading";
 import { FieldTypes } from "../../types/machine";
+import NoMachines from "../../components/NoMachines";
 
 const Machines = () => {
   const params = useParams();
@@ -60,6 +61,9 @@ const Machines = () => {
           Add New Machine
         </button>
       </PageHeading>
+      {machines?.length === 0 && (
+        <NoMachines><p className="text-sm">Add new machine</p></NoMachines>
+      )}
       <div className="flex flex-wrap ">
         {machines?.map((machine) => (
           <Machine

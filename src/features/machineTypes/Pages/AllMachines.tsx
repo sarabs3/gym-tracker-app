@@ -67,6 +67,9 @@ const AllMachines = () => {
               </button>
             </div>
           </PageHeading>
+          {type.machines?.length === 0 && (
+            <NoMachines><p className="text-sm">Add new machine</p></NoMachines>
+          )}
           <div className="flex flex-wrap">
             {type.machines.map((machine) => (
               <Machine
