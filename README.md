@@ -5,6 +5,9 @@
 Application is deployed here to quickly review the output.
 
 https://visionary-shortbread-ac7953.netlify.app/types
+<img width="1619" alt="Screenshot 2022-08-22 at 10 08 20 AM" src="https://user-images.githubusercontent.com/3119576/185840717-56911f01-5d7a-43e3-963e-3c81c1d4860f.png">
+<img width="1625" alt="Screenshot 2022-08-22 at 10 08 27 AM" src="https://user-images.githubusercontent.com/3119576/185840724-b93d36e3-f9dc-42dc-9411-a5669432e0e2.png">
+
 
 ### Tech Stack
 - Typescript
