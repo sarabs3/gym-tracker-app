@@ -8,6 +8,8 @@ import {
   updateMachineField,
 } from "../MachineTypesSlice";
 import Machine from "../components/Machine";
+import NoMachines from "../../../components/NoMachines";
+import { Link } from "react-router-dom";
 
 const AllMachines = () => {
   const allTypes = useAppSelector(selectTypes);
@@ -35,6 +37,14 @@ const AllMachines = () => {
   const addNewObject = (id: string) => {
     dispatch(addMachine({ id }));
   };
+  if (allTypes.length === 0) return <NoMachines>
+  <Link
+    className="text-sm underline text-blue-400 hover:text-blue-700"
+    to="/types"
+  >
+    Create new machine types.
+  </Link>
+  </NoMachines>
   return (
     <div className="flex flex-col container ">
       {allTypes.map((type) => (
