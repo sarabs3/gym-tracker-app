@@ -2,7 +2,6 @@ import { ChangeEvent } from "react";
 import PageHeading from "../../../components/PageHeading";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
-  addMachine,
   deleteMachine,
   selectTypes,
   updateMachineField,
