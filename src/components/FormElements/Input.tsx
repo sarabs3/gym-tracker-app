@@ -6,6 +6,7 @@ interface Props {
     value: string;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     type?: string;
+    placeholder?: string;
 }
 
 const Input: FC<Props> = ({ id, name, value, onChange, type = "text" }) => {
