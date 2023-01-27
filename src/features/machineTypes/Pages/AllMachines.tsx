@@ -35,7 +35,7 @@ const AllMachines = () => {
     dispatch(deleteMachine({ id, machineId }));
   };
   const addNewObject = (id: string) => {
-    dispatch(addMachine({ id }));
+    // dispatch(addMachine({ id }));
   };
   if (allTypes.length === 0) return <NoMachines>
   <Link
