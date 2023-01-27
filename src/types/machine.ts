@@ -21,6 +21,8 @@ export interface IBlueprintItem {
 export interface IMachine {
     fields: IBlueprintItem[]
     id: string;
+    reps?: string;
+    weight?: string;
 }
 export interface Size {
     width: number | undefined;

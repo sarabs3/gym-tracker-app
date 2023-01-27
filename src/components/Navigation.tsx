@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { lang } from "../lang";
 import { IMachineType } from "../types/machine";
 import { styleClass } from "../util";
 
@@ -15,7 +16,7 @@ const Navigation: FC<Props> = ({ navMenus }) => {
   return (
     <nav className="my-1 flex flex-col lg:flex-row">
       <Link className={styleClass("manage", activeMenu)} to={`/types`} state="manage">
-        Manage Types
+        {lang.manageTypes}
       </Link>
       <Link className={styleClass("all", activeMenu)} to={`/types/all`} state="all">
         All
