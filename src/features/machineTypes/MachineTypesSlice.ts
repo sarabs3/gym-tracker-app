@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { IMachineType } from "../../types/machine";
+import { FieldTypes, IMachineType } from "../../types/machine";
 import { v4 as uuidv4 } from "uuid";
 import {
   IAddNewFieldPayload,
@@ -95,12 +95,31 @@ export const MachineTypesSlice = createSlice({
         return userMachine;
       });
     },
-    addMachine: (state, { payload }) => {
+    addMachine: (state, { payload }: PayloadAction<{ reps: string, weight: string, id: string }>) => {
       const machine = state.machines.find(
         (machine) => machine.id === payload.id
       );
       if (!machine) return;
-      machine.machines.push({ fields: machine.blueprint, id: uuidv4() });
+      machine.machines.push({
+        reps: payload.reps, weight: payload.weight, id: uuidv4(),
+        fields: [{
+          fieldName: 'reps',
+          fieldValue: payload.reps,
+          fieldType: FieldTypes.text,
+          id: uuidv4(),
+        },{
+          fieldName: 'date',
+          fieldValue: `${new Date()}`,
+          fieldType: FieldTypes.date,
+          id: uuidv4(),
+        }, {
+          fieldName: 'weight',
+          fieldValue: payload.weight,
+          fieldType: FieldTypes.text,
+          id: uuidv4(),
+        }
+      ]
+      });
     },
     deleteMachine: (state, { payload }: PayloadAction<IMachinePayload>) => {
       const machine = state.machines.find(
