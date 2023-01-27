@@ -1,6 +1,5 @@
 import { ChangeEvent, FC } from "react";
 import { IMachine } from "../../../types/machine";
-import { format } from "date-fns";
 
 const MachineList: FC<Props> = ({
   machine,
@@ -14,7 +13,7 @@ const MachineList: FC<Props> = ({
     >
       <div className="my-3 px-3 flex flex-row">
         <div className="w-2/4 ml-2 flex flex-col">
-          {machine.fields[1].fieldValue && <span>{format(new Date(machine.fields[1].fieldValue), 'dd MMM yyyy')}</span>}
+          {machine.fields[1].fieldValue && <span>{machine.fields[1].fieldValue}</span>}
         </div>
         <div className="w-1/4 ml-2 flex flex-col">
           <span>{machine.fields[0].fieldValue} {machine.fields[0].fieldName}</span>
@@ -27,6 +26,7 @@ const MachineList: FC<Props> = ({
   );
 };
 
+// format(new Date(), 'dd MMM yyyy')
 interface Props {
   machine: IMachine;
   titleField: string | undefined;
