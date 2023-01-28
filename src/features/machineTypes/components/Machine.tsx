@@ -1,7 +1,5 @@
 import { ChangeEvent, FC } from "react";
-import Input from "../../../components/FormElements/Input";
-import { IMachine, IMachines } from "../../../types/machine";
-import CardHeader from "../../../components/CardHeader/CardHeader";
+import { IMachines } from "../../../types/machine";
 
 const Machine: FC<Props> = ({
   machine,

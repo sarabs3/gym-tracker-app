@@ -1,6 +1,6 @@
 import ReactModal from 'react-modal';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { IMachine, IMachines } from '../../types/machine';
+import { IMachines } from '../../types/machine';
 import { selectExercises } from '../exercises/ExerciseSlice';
 import { addMachine } from './MachineTypesSlice';
 

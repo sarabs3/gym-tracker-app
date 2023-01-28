@@ -1,20 +1,11 @@
-import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import {
-  selectMachines,
-} from "../MachineTypesSlice";
-import { Outlet, useNavigate, useParams } from "react-router-dom";
-import EditButton from "../../../components/BackButton";
-import AddExerciseToFolder from "./../AddExerciseToFolder";
+import { useAppSelector } from "../../../app/hooks";
+import { useNavigate } from "react-router-dom";
 import { selectExercises } from "../../exercises/ExerciseSlice";
 
 
 const AllExerciseList = () => {
-  const params = useParams();
   const exercises = useAppSelector(selectExercises);
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [addExercise, setAddExercise] = useState<boolean>(false);
   const addNew = () => {};
 
   return (

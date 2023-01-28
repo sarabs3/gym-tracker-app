@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from "react";
+import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../app/hooks";
 import { IMachine } from "../../../types/machine";

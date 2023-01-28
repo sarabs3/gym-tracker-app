@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from './features/machineTypes/Pages/Dashboard';
 import Machines from './features/machineTypes/Machines';
 import MachineTypesList from './features/machineTypes/Pages/MachineTypesList';

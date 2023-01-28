@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { FieldTypes, IMachineType } from "../../types/machine";
+import { IMachineType } from "../../types/machine";
 import { v4 as uuidv4 } from "uuid";
 import {
   IAddNewFieldPayload,

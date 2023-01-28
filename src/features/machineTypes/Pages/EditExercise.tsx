@@ -1,21 +1,10 @@
-import { ChangeEvent, useState } from "react";
 import CardHeader from "../../../components/CardHeader/CardHeader";
-import Input from "../../../components/FormElements/Input";
-import Select from "../../../components/FormElements/Select";
-import { IMachine } from "../../../types/machine";
 import { ReactComponent as BackIcon } from '../../../icons/back.svg';
-import { useNavigate, useLocation, useParams } from "react-router-dom";
-import { useAppSelector } from "../../../app/hooks";
-import { selectExercises } from "../MachineTypesSlice";
+import { useNavigate } from "react-router-dom";
 
-const EditExercise = ({
-}) => {
-  const [reps, setReps] = useState<string>('');
-  const [weight, setWeight] = useState<string>('');
-  const params = useParams();
+const EditExercise = () => {
   const machineDelete = () => {};
   const navigate = useNavigate();
-  const exercise = useAppSelector(selectExercises(params?.machineId, params?.id));
   return (
     <div>
     <button className="flex items-center" onClick={() => navigate(-1)}>
@@ -72,16 +61,5 @@ const EditExercise = ({
       </div>
   );
 };
-
-interface Props {
-  machine: IMachine;
-  titleField: string | undefined;
-  machineDelete: (id: string) => void;
-  handleChange: (
-    e: ChangeEvent<HTMLInputElement>,
-    id: string,
-    fieldId: string
-  ) => void;
-}
 
 export default EditExercise;

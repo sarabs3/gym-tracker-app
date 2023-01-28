@@ -1,35 +1,9 @@
-import React, { ChangeEvent, FC } from "react";
-import Input from "../../../components/FormElements/Input";
-import AddNewField from "./AddNewField";
-import { FieldTypes, IMachineType } from "../../../types/machine";
-import MachineTypeFields from "../MachineTypeFields";
-import Select from "../../../components/FormElements/Select";
-import CardHeader from "../../../components/CardHeader/CardHeader";
-import { useAppDispatch } from "../../../app/hooks";
-import {
-  addNewField,
-  deleteMachineType,
-  updateMachineType,
-} from "../MachineTypesSlice";
+import React, { FC } from "react";
+import { IMachineType } from "../../../types/machine";
 import { useNavigate } from "react-router-dom";
 
 const ExercisesList: FC<Props> = ({ type }) => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const deleteFieldType = () => {
-    dispatch(deleteMachineType({ id: type.id }));
-  };
-  const handleTypeChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    dispatch(
-      updateMachineType({
-        id: type.id,
-        key: e.target.name,
-        value: e.target.value,
-      })
-    );
-  };
   return (
     <div>
     <div

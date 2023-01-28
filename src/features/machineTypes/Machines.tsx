@@ -1,64 +1,18 @@
-import React, { ChangeEvent, useCallback, useMemo, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import React, { 
+  useState } from "react";
+import { useAppSelector } from "../../app/hooks";
 import {
-  addMachine,
   selectMachines,
-  deleteMachine,
-  updateMachineField,
-  selectTitleField,
 } from "./MachineTypesSlice";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import PageHeading from "../../components/PageHeading";
-import { FieldTypes } from "../../types/machine";
-import NoMachines from "../../components/NoMachines";
-import MachineList from "./components/List";
-import Input from "../../components/FormElements/Input";
 import EditButton from "../../components/BackButton";
-import { selectExercises } from "../exercises/ExerciseSlice";
-import ReactModal from "react-modal";
 import AddExerciseToFolder from "./AddExerciseToFolder";
 
 const Machines = () => {
   const params = useParams();
   const machines = useAppSelector(selectMachines(params?.id));
-  const titleField = useAppSelector(selectTitleField(params.id));
-  const [reps, setReps] = useState<string>('');
-  const [weight, setWeight] = useState<string>('');
-  const [addRep, setAddRep] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [addExercise, setAddExercise] = useState<boolean>(false);
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement>,
-    id: string,
-    fieldId: string
-  ) => {
-    if (!params?.id) return;
-    let value: string | boolean = e.target.value;
-    if (e.target.type === FieldTypes.checkbox) {
-      value = e.target.checked
-    }
-    dispatch(
-      updateMachineField({
-        id: params.id,
-        machineId: id,
-        fieldId,
-        key: "fieldValue",
-        value: value,
-      })
-    );
-  };
-  const AddNew = () => {
-    if (!params?.id) return;
-    // dispatch(addMachine({ id: params.id, reps, weight }));
-    setReps('');
-    setWeight('');
-    setAddRep(false);
-  };
-  const machineDelete = (id: string) => {
-    if (!params?.id) return;
-    dispatch(deleteMachine({ id: params.id, machineId: id }));
-  };
   const addNewW = () => {
     setAddExercise(true);
   };
