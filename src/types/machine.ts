@@ -1,8 +1,10 @@
+import { IExerciseRecord } from "../features/exercises/types";
+
 export interface IMachineType {
     title: string;
     type: string;
     blueprint: IBlueprintItem[];
-    machines: IMachine[];
+    machines: IMachines[];
     id: string;
 }
 export enum FieldTypes {
@@ -18,11 +20,14 @@ export interface IBlueprintItem {
     fieldType: FieldTypes;
     fieldValue: string;
 }
-export interface IMachine {
-    fields: IBlueprintItem[]
+export interface IMachines {
     id: string;
-    reps?: string;
-    weight?: string;
+    name: string;
+}
+export interface IMachine {
+    id: string;
+    name: string;
+    records: IExerciseRecord[];
 }
 export interface Size {
     width: number | undefined;

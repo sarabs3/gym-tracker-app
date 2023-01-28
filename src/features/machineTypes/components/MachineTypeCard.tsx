@@ -42,7 +42,7 @@ const MachineTypeComponent: FC<Props> = ({ type }) => {
         <Input
           onChange={handleTypeChange}
           id="type"
-          name="Object Type"
+          name="Exercise Name"
           value={type.type}
         />
         <Select

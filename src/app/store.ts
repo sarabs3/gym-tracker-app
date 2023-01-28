@@ -1,4 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import ExercisesSlice from '../features/exercises/ExerciseSlice';
 import MachineTypesSlice from '../features/machineTypes/MachineTypesSlice';
 
 function saveToLocalStorage(state: any) {
@@ -18,7 +19,8 @@ function loadFromLocalStorage() {
 
 export const store = configureStore({
   reducer: {
-    machineTypes: MachineTypesSlice
+    machineTypes: MachineTypesSlice,
+    exercises: ExercisesSlice,
   },
   preloadedState: loadFromLocalStorage()
 });

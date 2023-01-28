@@ -39,9 +39,9 @@ export const MachineTypesSlice = createSlice({
       if (!machine) return;
       Object.assign(machine, { [payload.key]: payload.value });
     },
-    addNew: (state) => {
+    addNew: (state, { payload }: PayloadAction<{name: string}>) => {
       const uuid = uuidv4();
-      state.machines.push({ ...newMachineType, id: uuid });
+      state.machines.push({ ...newMachineType, id: uuid, type: payload.name });
     },
     deleteMachineType: (state, { payload }: PayloadAction<IDeletePayload>) => {
       const machine = state.machines.findIndex(
@@ -63,7 +63,7 @@ export const MachineTypesSlice = createSlice({
       };
       machine.blueprint.push(newField);
       machine.machines = machine.machines.map((userMachine) => {
-        userMachine.fields.push(newField);
+        // userMachine.fields.push(newField);
         return userMachine;
       });
     },
@@ -84,42 +84,31 @@ export const MachineTypesSlice = createSlice({
         fieldValue: "",
       });
       machine.machines = machine.machines.map((userMachine) => {
-        const updatedField = userMachine.fields.find(
-          (field) => field.id === payload.fieldId
-        );
-        if (!updatedField) return userMachine;
-        Object.assign(updatedField, {
-          [payload.key]: payload.value,
-          fieldValue: "",
-        });
+        // const updatedField = userMachine.fields.find(
+        //   (field) => field.id === payload.fieldId
+        // );
+        // if (!updatedField) return userMachine;
+        // Object.assign(updatedField, {
+        //   [payload.key]: payload.value,
+        //   fieldValue: "",
+        // });
         return userMachine;
       });
     },
-    addMachine: (state, { payload }: PayloadAction<{ reps: string, weight: string, id: string }>) => {
+    addMachine: (state, { payload }: PayloadAction<{ name: string, id: string, exerciseId: string }>) => {
       const machine = state.machines.find(
         (machine) => machine.id === payload.id
       );
       if (!machine) return;
-      machine.machines.push({
-        reps: payload.reps, weight: payload.weight, id: uuidv4(),
-        fields: [{
-          fieldName: 'reps',
-          fieldValue: payload.reps,
-          fieldType: FieldTypes.text,
-          id: uuidv4(),
-        },{
-          fieldName: 'date',
-          fieldValue: `${new Date()}`,
-          fieldType: FieldTypes.date,
-          id: uuidv4(),
-        }, {
-          fieldName: 'weight',
-          fieldValue: payload.weight,
-          fieldType: FieldTypes.text,
-          id: uuidv4(),
-        }
-      ]
-      });
+      const checkIfAlreadyAdded = machine.machines.findIndex(m => m.id === payload.exerciseId);
+      if (checkIfAlreadyAdded > -1) {
+        machine.machines.splice(checkIfAlreadyAdded, 1);
+      } else {
+        machine.machines.push({
+          id: payload.exerciseId,
+          name: payload.name,
+        });
+      }
     },
     deleteMachine: (state, { payload }: PayloadAction<IMachinePayload>) => {
       const machine = state.machines.find(
@@ -144,11 +133,6 @@ export const MachineTypesSlice = createSlice({
         (machine) => machine.id === payload.machineId
       );
       if (!userMachine) return;
-      const fieldToUpdate = userMachine.fields.find(
-        (field) => field.id === payload.fieldId
-      );
-      if (!fieldToUpdate) return;
-      Object.assign(fieldToUpdate, { [payload.key]: payload.value });
     },
     deleteAttribute: (
       state,
@@ -161,12 +145,6 @@ export const MachineTypesSlice = createSlice({
       machine.blueprint = machine.blueprint.filter(
         (field) => field.id !== payload.fieldId
       );
-      machine.machines = machine.machines.map((userMachine) => {
-        const remainingFields = userMachine.fields.filter(
-          (field) => field.id !== payload.fieldId
-        );
-        return { fields: remainingFields, id: userMachine.id };
-      });
     },
   },
 });
@@ -186,6 +164,8 @@ export const {
 export const selectTypes = (state: RootState) => state.machineTypes.machines;
 export const selectMachines = (id: string | undefined) => (state: RootState) =>
   state.machineTypes.machines.find((machine) => machine.id === id)?.machines;
+export const selectExercises = (id: string | undefined, exerciseId: string | undefined) => (state: RootState) =>
+  state.machineTypes.machines.find((machine) => machine.id === id)?.machines.find((exercise) => exercise.id === exerciseId);
 export const selectTitleField =
   (id: string | undefined) => (state: RootState) =>
     state.machineTypes.machines.find((machine) => machine.id === id)?.title;

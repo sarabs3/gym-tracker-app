@@ -18,7 +18,7 @@ import MachineTypeReducer, {
     });
 
     it('should handle add new machine type', () => {
-      const actual = MachineTypeReducer(initialState, addNew());
+      const actual = MachineTypeReducer(initialState, addNew({ name: 'sarab' }));
       expect(actual.machines.length).toEqual(5);
     });
     it('should handle delete machine type', () => {
