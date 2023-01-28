@@ -11,20 +11,21 @@ const MachineList: FC<Props> = ({
 }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const _ = require("lodash"); 
   const [addRep, setAddRep] = useState<boolean>(false);
-  const record = (reps: number, weight: number) => {
-    dispatch(addExerciseRecord({ id: machine.id, reps, weight }));
+  const record = (reps: number, weight: number, date: string) => {
+    dispatch(addExerciseRecord({ id: machine.id, reps, weight, date }));
   };
   return (
     <div className="flex flex-col">
       <h3>{machine.name}</h3>
       <AddRecord isOpen={addRep} close={() => setAddRep(false)} add={record} />
     <div
-      className="my-2 md:m-2 border relative rounded-lg transition ease-in-out md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] shadow bg-white hover:shadow-none hover:bg-blue-50 border-b-8 hover:border-blue-300"
+      className="my-4 rounded-lg bg-white shadow"
       onClick={() => navigate(`/types/exercise/${machineId}/${machine.id}`)}
     >
       {machine.records.map(record => 
-        <div key={record.id} className="my-3 px-3 flex flex-row">
+        <div key={record.id} className="p-3 flex flex-row border-b-2 border-gray-100">
           <div className="w-2/4 ml-2 flex flex-col">
             {record.date && <span>{new Date(record.date).toLocaleString("em-us", { year: "numeric", month: "short", day: "numeric" })}</span>}
           </div>

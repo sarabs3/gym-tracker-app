@@ -49,7 +49,7 @@ export const ExercisesSlice = createSlice({
   name: "machineTypes",
   initialState,
   reducers: {
-    addExerciseRecord: (state, { payload }: PayloadAction<{ id: string, reps: number, weight: number }>) => {
+    addExerciseRecord: (state, { payload }: PayloadAction<{ id: string, reps: number, weight: number, date: string }>) => {
       console.log('payload', payload);
       const machine = state.exercises.findIndex(ex => ex.id === payload.id);
       console.log('machine', machine, state.exercises[machine].name);
@@ -58,7 +58,7 @@ export const ExercisesSlice = createSlice({
         state.exercises[machine].records.push({
           reps: payload.reps,
           weight: payload.weight,
-          date: `${new Date()}`,
+          date: payload.date,
           id: uuidv4(),
         });
       } else {
