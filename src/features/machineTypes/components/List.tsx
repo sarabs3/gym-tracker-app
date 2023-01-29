@@ -11,7 +11,6 @@ const MachineList: FC<Props> = ({
 }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const _ = require("lodash"); 
   const [addRep, setAddRep] = useState<boolean>(false);
   const record = (reps: number, weight: number, date: string) => {
     dispatch(addExerciseRecord({ id: machine.id, reps, weight, date }));
