@@ -23,7 +23,7 @@ const AllExerciseList = () => {
   };
   return (
     <>
-    <ReactModal isOpen={isOpen} style={{content: {
+    <ReactModal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} style={{content: {
     top: '50%',
     left: '50%',
     right: 'auto',

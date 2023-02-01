@@ -22,7 +22,7 @@ const AddExerciseToFolder = ({ addExercise, close, machineId, machines }: AddExe
   const alreadyAdded = (mid: string) => !!machines.find(({ id, name }) => id === mid);
 
   return (<ReactModal isOpen={addExercise} onRequestClose={close}>
-  {exercises.map(({ id, name }) => <div className="flex" key={id}>
+  {exercises.map(({ id, name }) => <div className="flex items-center" key={id}>
     <input type="checkbox" checked={alreadyAdded(id)} onChange={() => addExerciseToFolder(id, name)} />
     <p className="p-2 border-b-2 border-gray-100" key={id}>{name}</p>
   </div>)}
