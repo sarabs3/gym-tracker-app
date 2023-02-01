@@ -66,10 +66,14 @@ export const ExercisesSlice = createSlice({
         console.log('no')
       }
     },
+    addExercise: (state, { payload }) => {
+      state.exercises.push({ id: uuidv4(), name: payload.name, records: [] });
+    },
   },
 });
 
 export const {
+  addExercise,
   addExerciseRecord,
 } = ExercisesSlice.actions;
 export const selectExercises = (state: RootState) => state.exercises.exercises;
